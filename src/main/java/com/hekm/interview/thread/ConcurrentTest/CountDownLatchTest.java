@@ -8,6 +8,7 @@ import java.util.concurrent.Executors;
  * @Author: heKangMin
  * @Description:
  * CountDownLatch:一个线程（或者多个），等待另外N个线程完成某个事情之后才能执行,被等待的那个线程调用CountDownLatch.await()方法
+ * CyclicBarrier可重用，CountDownLatch不可重用，计数值为0该CountDownLatch就不可再用了
  * @Date: Created in 17:00 2019/7/26
  * @Modified By:
  */

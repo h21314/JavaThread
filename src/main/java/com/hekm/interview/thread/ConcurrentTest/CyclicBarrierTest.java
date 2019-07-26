@@ -8,6 +8,7 @@ import java.util.concurrent.Executors;
 /**
  * @Author: heKangMin
  * @Description: N个线程相互等待，任何一个线程完成之前，所有的线程都必须等待
+ * CyclicBarrier可重用，CountDownLatch不可重用，计数值为0该CountDownLatch就不可再用了
  * @Date: Created in 17:30 2019/7/26
  * @Modified By:
  */
