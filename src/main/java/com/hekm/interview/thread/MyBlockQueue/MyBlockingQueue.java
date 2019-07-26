@@ -12,11 +12,11 @@ import java.util.concurrent.Executors;
  * @Date: Created in 9:33 2019/7/26
  * @Modified By:
  */
-public class MyBlockQueue<E> {
+public class MyBlockingQueue<E> {
     final List<E> list;
     private final int limit;
 
-    public MyBlockQueue(int limit){
+    public MyBlockingQueue(int limit){
         list = new LinkedList();
         this.limit = limit;
     }
@@ -84,27 +84,27 @@ public class MyBlockQueue<E> {
 
 
     public static void main(String[] args) {
-        final MyBlockQueue<Integer> myBlockQueue = new MyBlockQueue<>(10);
+        final MyBlockingQueue<Integer> myBlockingQueue = new MyBlockingQueue<>(10);
         final int NTHREADS = 100;
         ExecutorService executorService = Executors.newCachedThreadPool();
         for (int i = 0; i < NTHREADS; i++) {
-            executorService.execute(new BlockQueueRunnable(myBlockQueue));
+            executorService.execute(new BlockQueueRunnable(myBlockingQueue));
         }
     }
 
     static class BlockQueueRunnable implements Runnable{
-        private final MyBlockQueue<Integer> myBlockQueue;
-        public BlockQueueRunnable(MyBlockQueue<Integer> myBlockQueue){
-            this.myBlockQueue = myBlockQueue;
+        private final MyBlockingQueue<Integer> myBlockingQueue;
+        public BlockQueueRunnable(MyBlockingQueue<Integer> myBlockingQueue){
+            this.myBlockingQueue = myBlockingQueue;
         }
         @Override
         public void run() {
             Random random = new Random();
             int r = random.nextInt(100);
             if (r < 50) {
-                myBlockQueue.putByWait(r);
+                myBlockingQueue.putByWait(r);
             }else{
-                myBlockQueue.takeByWait();
+                myBlockingQueue.takeByWait();
             }
         }
     }
